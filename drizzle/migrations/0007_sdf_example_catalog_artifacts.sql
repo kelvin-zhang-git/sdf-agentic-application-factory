@@ -1,0 +1,10 @@
+CREATE TABLE public.example_catalog(id text PRIMARY KEY,kind text NOT NULL CHECK(kind IN ('block','agent')),name text NOT NULL,batch text NOT NULL,status text NOT NULL DEFAULT 'not_started' CHECK(status='not_started'),source text NOT NULL DEFAULT 'seed' CHECK(source='seed'));
+GRANT SELECT ON public.example_catalog TO authenticated; GRANT ALL ON public.example_catalog TO service_role;
+ALTER TABLE public.example_catalog ENABLE ROW LEVEL SECURITY;
+CREATE POLICY catalog_read ON public.example_catalog FOR SELECT TO authenticated USING (true);
+CREATE TABLE public.example_artifacts(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),app_id uuid NOT NULL REFERENCES public.apps(id) ON DELETE CASCADE,title text NOT NULL,format text NOT NULL CHECK(format IN ('markdown','json','yaml','mermaid')),version integer NOT NULL CHECK(version>0),content text NOT NULL CHECK(length(content)<=100000),source text NOT NULL DEFAULT 'seed' CHECK(source='seed'),created_at timestamptz NOT NULL DEFAULT now(),UNIQUE(app_id,title,version));
+GRANT SELECT ON public.example_artifacts TO authenticated; GRANT ALL ON public.example_artifacts TO service_role;
+ALTER TABLE public.example_artifacts ENABLE ROW LEVEL SECURITY;
+CREATE POLICY artifact_member_read ON public.example_artifacts FOR SELECT TO authenticated USING(public.is_admin() OR public.has_app_role(app_id,NULL));
+ALTER TABLE public.apps ADD COLUMN source text NOT NULL DEFAULT 'user' CHECK(source IN ('user','seed'));
+INSERT INTO public.example_catalog(id,kind,name,batch) VALUES ('B01','block','资料导入','2'),('requirement_analyst','agent','需求分析师','2');

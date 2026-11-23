@@ -1,0 +1,2 @@
+ALTER TABLE public.example_catalog DROP CONSTRAINT example_catalog_status_check;
+ALTER TABLE public.example_catalog ADD CONSTRAINT example_catalog_status_check CHECK (status IN ('not_started','implemented'));

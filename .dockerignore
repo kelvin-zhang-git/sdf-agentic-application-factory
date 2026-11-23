@@ -1,0 +1,7 @@
+node_modules
+.output
+.local-data
+.git
+*.local
+dist
+coverage

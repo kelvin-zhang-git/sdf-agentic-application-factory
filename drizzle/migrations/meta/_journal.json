@@ -1,0 +1,118 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794581042732,
+      "tag": "0000_sdf_1a_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794581074093,
+      "tag": "0001_sdf_1a_find_profile",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794581127973,
+      "tag": "0002_sdf_1a_admin_roles",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794615663287,
+      "tag": "0003_sdf_1b_model_configuration",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794618106085,
+      "tag": "0004_sdf_1c_diagnostic_logs",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794618299955,
+      "tag": "0005_sdf_1c_cron_nonce",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794619822872,
+      "tag": "0006_sdf_cleanup_acceptance",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794619866679,
+      "tag": "0007_sdf_example_catalog_artifacts",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794619980074,
+      "tag": "0008_sdf_batch1_examples",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794623141415,
+      "tag": "0009_sdf_2a_workflow_requirements",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1794623817489,
+      "tag": "0010_sdf_2b_engine_rpcs",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1794623878108,
+      "tag": "0011_sdf_2c_catalog_status",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1794625594715,
+      "tag": "0012_sdf_2b_fix_same_app_trigger",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1794625663260,
+      "tag": "0013_sdf_2b_checkpoint_role",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1794627349842,
+      "tag": "0014_sdf_2e_claim_fairness_stall_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1794627378960,
+      "tag": "0015_sdf_2e_immutable_allow_cascade",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+CREATE TABLE public.app_logs (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), created_at timestamptz NOT NULL DEFAULT now(), actor_id uuid, trace_id text NOT NULL, error_id text, level text NOT NULL CHECK (level IN ('info','error')), code text NOT NULL, path text NOT NULL, method text NOT NULL, status integer NOT NULL, duration_ms integer NOT NULL DEFAULT 0, detail jsonb NOT NULL DEFAULT '{}'::jsonb);
+GRANT SELECT ON public.app_logs TO authenticated;
+GRANT ALL ON public.app_logs TO service_role;
+ALTER TABLE public.app_logs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY app_logs_admin_select ON public.app_logs FOR SELECT TO authenticated USING (public.is_admin());
+CREATE INDEX app_logs_error_idx ON public.app_logs(error_id);
+CREATE INDEX app_logs_created_idx ON public.app_logs(created_at DESC);
+CREATE TABLE public.client_errors (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), created_at timestamptz NOT NULL DEFAULT now(), actor_id uuid NOT NULL, error_id text NOT NULL, trace_id text NOT NULL, code text NOT NULL, path text NOT NULL, detail jsonb NOT NULL DEFAULT '{}'::jsonb);
+GRANT SELECT ON public.client_errors TO authenticated;
+GRANT ALL ON public.client_errors TO service_role;
+ALTER TABLE public.client_errors ENABLE ROW LEVEL SECURITY;
+CREATE POLICY client_errors_admin_select ON public.client_errors FOR SELECT TO authenticated USING (public.is_admin());
+CREATE INDEX client_errors_error_idx ON public.client_errors(error_id);
+CREATE INDEX client_errors_created_idx ON public.client_errors(created_at DESC);
